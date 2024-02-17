@@ -12,4 +12,4 @@ app.set('view engine', 'ejs');
 
 app.use('/', router);
 
-app.listen(PORT, ()=>{console.log(`Server running in port ${PORT}`)})
+app.listen(PORT, ()=>{console.log(`Server running in port ${PORT}`)})  
