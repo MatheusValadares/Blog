@@ -1,23 +1,67 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/home', (req, res)=>{
+const cards = [
 
-   res.render('home');
+   {
+      id: 0,
+      img: "/assets/livro.jpg",
+      type: "Hardware",
+      title: "What is Lorem Ipsum?",
+      introduction: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      link: "http://localhost:5000/home",
+      date: "10/02/2024"
+   },
+
+   {
+      id: 1,
+      img: "/assets/livro.jpg",
+      type: "Redes",
+      title: "What is Lorem Ipsum?",
+      introduction: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      link: "http://localhost:5000/home",
+      date: "10/02/2024"
+   },
+
+   {
+      id: 2,
+      img: "/assets/livro.jpg",
+      type: "Hardware",
+      title: "What is Lorem Ipsum?",
+      introduction: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      link: "http://localhost:5000/home",
+      date: "10/02/2024"
+   },
+
+   {
+      id: 3,
+      img: "/assets/livro.jpg",
+      type: "Hardware",
+      title: "What is Lorem Ipsum?",
+      introduction: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      link: "http://localhost:5000/home",
+      date: "10/02/2024"
+   },
+
+]
+
+router.get('/home', (req, res) => {
+
+   res.render('home', { cards });
 
 });
 
-router.get('/post', (req, res)=>{
+router.get('/post', (req, res) => {
 
-    res.render('post');
- 
- });
+   res.render('post');
 
- router.get('/newpost', (req, res)=>{
+});
 
-    res.render('newpost');
- 
- });
+router.get('/newpost', (req, res) => {
+
+   res.render('newpost');
+
+});
 
 
 
