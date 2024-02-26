@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.snow.css" rel="stylesheet">
     <title>New Post</title>
 </head>
 
@@ -12,9 +14,54 @@
 
     <%- include ('./partials/navbar') %>
 
-        <h1 class="container">New Post</h1>
+        <div class="container">
+
+            <h1 class="h1 mt-5">Novo post</h1>
+
+            <form class="mt-5 bg-light p-5">
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Título</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Introdução</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default">
+                </div>
+
+                <select class="form-select my-3" aria-label="Default select example">
+                    <option selected>Categorias</option>
+                    <option value="Algoritmos">Algoritmos</option>
+                    <option value="Arquitetura de computadores">Arquitetura de computadores</option>
+                    <option value="Arquitetura de software">Arquitetura de software</option>
+                    <option value="Estrutura de dados">Estrutura de dados</option>
+                    <option value="Linguagens de Programação">Linguagens de Programação</option>
+                    <option value="Lógica de Programação">Lógica de Programação</option>
+                    <option value="Redes de Computadores">Redes de Computadores</option>
+                    <option value="Sistemas Operacionais">Sistemas Operacionais</option>
+                </select>
+
+                <div id="editor">
+
+                </div>
+
+                <button class="mt-3">Publicar</button>
+
+            </form>
+
+
+        </div>
 
         <script src="/bootstrap/js/bootstrap.bundle.js"></script>
+
+        <script>
+            const quill = new Quill('#editor', {
+                theme: 'snow'
+            });
+        </script>
 
 </body>
 
