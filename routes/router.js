@@ -53,7 +53,7 @@ router.get('/home', (req, res) => {
 
 router.get('/post', (req, res) => {
 
-   res.render('post');
+   res.render('post', { cards: [cards[0], cards[1]] });
 
 });
 
