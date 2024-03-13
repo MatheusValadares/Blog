@@ -1,61 +1,37 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+const Post = require("../models/Post");
 
-const cards = [
 
-   {
-      id: 0,
-      img: "/assets/livro.jpg",
-      type: "Hardware",
-      title: "What is Lorem Ipsum?",
-      introduction: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      link: "http://localhost:5000/home",
-      date: "10/02/2024"
-   },
+router.get('/home', async (req, res) => {
 
-   {
-      id: 1,
-      img: "/assets/livro.jpg",
-      type: "Redes",
-      title: "What is Lorem Ipsum?",
-      introduction: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      link: "http://localhost:5000/home",
-      date: "10/02/2024"
-   },
+   try {
+      let cards = await Post.find({});
+      res.render('home', { cards });
+   } catch (error) {
+      res.send(error)
+   }
 
-   {
-      id: 2,
-      img: "/assets/livro.jpg",
-      type: "Hardware",
-      title: "What is Lorem Ipsum?",
-      introduction: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      link: "http://localhost:5000/home",
-      date: "10/02/2024"
-   },
-
-   {
-      id: 3,
-      img: "/assets/livro.jpg",
-      type: "Hardware",
-      title: "What is Lorem Ipsum?",
-      introduction: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      link: "http://localhost:5000/home",
-      date: "10/02/2024"
-   },
-
-]
-
-router.get('/home', (req, res) => {
-
-   res.render('home', { cards });
 
 });
 
-router.get('/post', (req, res) => {
 
-   res.render('post', { cards: [cards[0], cards[1]] });
+router.get('/post/:title', async (req, res) => {
 
-});
+   let title = req.params.title;
+
+   try {
+
+      let post = await Post.findOne({ title });
+      let cards = await Post.find({});
+      console.log(cards)
+      res.render('post', { post, cards });
+   } catch (error) {
+      res.send(error)
+   }
+
+})
 
 router.get('/newpost', (req, res) => {
 
