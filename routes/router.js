@@ -1,37 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const Post = require("../models/Post");
+const postController = require('../controllers/postController');
 
 
-router.get('/home', async (req, res) => {
-
-   try {
-      let cards = await Post.find({});
-      res.render('home', { cards });
-   } catch (error) {
-      res.send(error)
-   }
+router.get('/home', postController.getPostsHome);
 
 
-});
-
-
-router.get('/post/:title', async (req, res) => {
-
-   let title = req.params.title;
-
-   try {
-
-      let post = await Post.findOne({ title });
-      let cards = await Post.find({});
-      console.log(cards)
-      res.render('post', { post, cards });
-   } catch (error) {
-      res.send(error)
-   }
-
-})
+router.get('/post/:title', postController.getPost)
 
 router.get('/newpost', (req, res) => {
 
