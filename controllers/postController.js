@@ -32,4 +32,20 @@ const getPost = async (req, res) => {
 
 }
 
-module.exports = { getPostsHome, getPost };
+const createPost = async (req, res) => {
+
+  let post = new Post(req.body);
+
+  try {
+
+    let doc = await post.save();
+    res.send(doc);
+
+  } catch (error) {
+    res.send(error)
+  }
+
+
+}
+
+module.exports = { getPostsHome, getPost, createPost };

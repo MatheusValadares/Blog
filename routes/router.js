@@ -8,11 +8,7 @@ router.get('/home', postController.getPostsHome);
 
 router.get('/post/:title', postController.getPost)
 
-router.get('/newpost', (req, res) => {
-
-   res.render('newpost');
-
-});
+router.post('/newpost', express.urlencoded({ extended: true }), postController.createPost);
 
 
 
