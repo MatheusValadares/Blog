@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Post = require("../models/Post");
+const path = require('path');
 
 
 const getPostsHome = async (req, res) => {
@@ -12,6 +13,13 @@ const getPostsHome = async (req, res) => {
   }
 
 }
+
+const getNewPost = (req, res) => {
+
+  res.render('newpost');
+
+}
+
 
 const getPost = async (req, res) => {
 
@@ -34,11 +42,16 @@ const getPost = async (req, res) => {
 
 const createPost = async (req, res) => {
 
-  let post = new Post(req.body);
+  const dateNow = new Date();
+  let post = req.body;
+  post.date = dateNow.toDateString();
+  post.link = path.join(__dirname, `post/${post.title}`);
+
+  let newPost = Post(post);
 
   try {
 
-    let doc = await post.save();
+    let doc = await newPost.save();
     res.send(doc);
 
   } catch (error) {
@@ -48,4 +61,4 @@ const createPost = async (req, res) => {
 
 }
 
-module.exports = { getPostsHome, getPost, createPost };
+module.exports = { getPostsHome, getNewPost, getPost, createPost };

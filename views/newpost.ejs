@@ -18,21 +18,21 @@
 
             <h1 class="h1 mt-5">Novo post</h1>
 
-            <form class="mt-5 bg-light p-5">
+            <form action="/newpost/createpost" method="post" class="mt-5 bg-light p-5">
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Título</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input"
+                    <input name="title" type="text" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default">
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Introdução</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input"
+                    <input name="introduction" type="text" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default">
                 </div>
 
-                <select class="form-select my-3" aria-label="Default select example">
+                <select name="type" class="form-select my-3" aria-label="Default select example">
                     <option selected disabled>Categorias</option>
                     <option value="Algoritmos">Algoritmos</option>
                     <option value="Arquitetura de Computadores">Arquitetura de Computadores</option>
@@ -44,7 +44,9 @@
                     <option value="Sistemas Operacionais">Sistemas Operacionais</option>
                 </select>
 
-                <div id="editor">
+                <input name="img" type="text">
+
+                <div name="text" id="editor">
 
                 </div>
 
